@@ -19,27 +19,29 @@ function validate(evt) {
       return false;
     }
 
-    const zipVal = validateZip();
-    if (zipVal === false) {
-      evt.returnValue = false;
-      return false;
-    }
-  
-    const countryVal = validateCountry();
-    if (countryVal === false) {
-      evt.returnValue = false;
-      return false;
-    }
-  
     const passwordVal = validatePassword();
     if (passwordVal === false) {
       evt.returnValue = false;
       return false;
     }
+
+    const tandCVal = validateTandC();
+    if (tandCVal === false) {
+      evt.returnValue = false;
+      return false;
+    }
   
-    alert(`Name: ${nameVal}
+    const repeatPasswordVal = validateRepeatPassword();
+    if (repeatPasswordVal === false) {
+      evt.returnValue = false;
+      return false;
+    }
+  
+  
+  //what to do here with the password section?
+    alert(`username: ${usernameVal}
   Email: ${emailVal}
-  Country: ${countryVal}
+  Country: ${tandCVal}
   Zip Code: ${zipVal}
   Password: ...that's a secret.`);
   
@@ -83,14 +85,14 @@ function validateEmail() {
     return emailVal;
   }
   
-  // Name Validation
-  function validateName() {
-    if (name.value === "") {
-      alert("Please provide a name.");
-      name.focus();
+  // Username Validation
+  function validateUsername() {
+    if (username.value === "") {
+      alert("Please provide a username!");
+      username.focus();
       return false;
     }
-    return name.value;
+    return username.value;
   }
   
   // Password Validation
@@ -103,24 +105,24 @@ function validateEmail() {
     return password.value;
   }
   
-  // Country Validation
-  function validateCountry() {
-    if (country.value === "") {
-      alert("Please provide a country.");
-      country.focus();
+  // Terms & Conditions Validation
+  function validateTandC() {
+    if (tandC.value === "") {
+      alert("Please accept the Terms & Conditions.");
+      tandC.focus();
       return false;
     }
-    return country.value;
+    return tandC.value;
   }
   
-  // Zip Code Validation
-  function validateZip() {
-    if (zip.value === "") {
-      alert("Please provide a zip code.");
-      zip.focus();
+  // Repeat Password Validation
+  function validateRepeatPassword() {
+    if (repeatPassword.value === "") {
+      alert("PASSWORDS DO NOT MATCH! OH MY GOD.");
+      repeatPassword.focus();
       return false;
     }
-  
+  ////make this where the passwords have to match
     if (zip.value.length !== 5 || isNaN(Number(zip.value))) {
       alert("Zip codes must be in the format #####.");
       zip.focus();
